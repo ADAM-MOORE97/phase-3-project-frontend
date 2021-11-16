@@ -7,6 +7,11 @@ import Functionlist from './components/Functionlist';
 import { useEffect, useState } from 'react';
 
 
+
+import Functionlist from './components/Functionlist';
+import Profile from './components/Profile';
+
+
 function App() {
   const [people, setPeople] = useState([])
   const [person, setPerson] = useState([])
@@ -40,7 +45,7 @@ function App() {
     <SignupPage addUser={addUser}/>
 
       <Functionlist/>
-
+      <Profile person={person}/>
       <PaymentCalculator />
       <Loanlist/>
     </div>
