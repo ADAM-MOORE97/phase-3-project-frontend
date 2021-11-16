@@ -20,6 +20,7 @@ const PaymentCalculator = () => {
     setPaymentVisible(!paymentVisible);
   };
 
+
   const performCalculations = ({ amount, term, interest }) => {
     const interestDecimal = parseFloat(interest) / 100 / 12;
     const paymentInMonths = term * 12;
@@ -72,6 +73,7 @@ const PaymentCalculator = () => {
           onChange={handleInput}
         />
       </p> */}
+
       <button onClick={() => {
           handleSubmit();
           toggleVisiblePayment();
@@ -81,6 +83,8 @@ const PaymentCalculator = () => {
         {`Your monthly payment is ${performCalculations(userInput)}`} 
         </>
       )}</p>
+      <button onClick={handleSubmit}>calculate</button>
+
     </>
   );
 };
