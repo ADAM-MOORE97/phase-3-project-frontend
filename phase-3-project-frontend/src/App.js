@@ -23,17 +23,17 @@ function App() {
   function setPersonState(personObj){
     setPerson(personObj)
   }
-  function handleSubmit(newPerson){
-       console.log(newPerson)
+  function handleSubmit(editProfile){
+       console.log(editProfile)
        fetch("http://localhost:9292/people",{
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(newPerson),
+        body: JSON.stringify(editProfile),
       })
         .then((r) => r.json())
-        .then((data) => console.log(data));
+        .then((updatePerson) => console.log(updatePerson));
   }
   
   return (
