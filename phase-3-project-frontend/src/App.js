@@ -30,7 +30,7 @@ function App() {
     <LandingPage setPersonState={setPersonState} people={people}/>
 
       <Functionlist/>
-      <Profile people={people}/>
+      <Profile person={person}/>
       <PaymentCalculator />
       <Loanlist/>
     </div>
