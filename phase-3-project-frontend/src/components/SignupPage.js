@@ -3,10 +3,10 @@ const SignupPage = ({addUser}) =>{
     const [newPerson, setNewPerson] = useState({
         first_name: '',
         last_name: '',
-        phone_number: '',
+        phone_number: 0,
         address: '',
         email: '',
-        DOB: '',
+        DOB: 1900-11-11,
         gender: '',
         username: '',
         password: ''
