@@ -6,13 +6,18 @@ const PaymentCalculator = () => {
     term: "",
     interest: "",
   });
+  const [paymentVisible, setPaymentVisible] = useState(false);
 
   const handleInput = (e) =>
     setUserInput({ ...userInput, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     console.log(performCalculations(userInput));
+  };
+
+  const toggleVisiblePayment = () => {
+    setPaymentVisible(!paymentVisible);
   };
 
   const performCalculations = ({ amount, term, interest }) => {
@@ -67,7 +72,15 @@ const PaymentCalculator = () => {
           onChange={handleInput}
         />
       </p> */}
-      <button onClick={handleSubmit}>calculate</button>
+      <button onClick={() => {
+          handleSubmit();
+          toggleVisiblePayment();
+        }}>calculate</button>
+      <p>{paymentVisible && (
+        <>
+        {`Your monthly payment is ${performCalculations(userInput)}`} 
+        </>
+      )}</p>
     </>
   );
 };
