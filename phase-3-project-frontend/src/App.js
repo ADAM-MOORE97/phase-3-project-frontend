@@ -6,7 +6,6 @@ import { useEffect, useState } from 'react';
 function App() {
   const [people, setPeople] = useState([])
   const [person, setPerson] = useState([])
-
   useEffect(() => {
     fetch('http://localhost:9292/people')
     .then(r => r.json())
@@ -15,10 +14,10 @@ function App() {
       "hey"
     }
   }, []);
-
-  function setPersonState(){
-
+  function setPersonState(personObj){
+    setPerson(personObj)
   }
+  
   return (
     <div className="App">
     <LandingPage setPersonState={setPersonState} people={people}/>
