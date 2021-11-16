@@ -1,6 +1,6 @@
 import React from "react" 
-import { useEffect, useState } from 'react';
-function Profile(person) {
+import { useState } from 'react';
+function Profile({person,handleSubmit}) {
  
     const [showForm, setShowForm] = useState(false)
     const [username, setUsername] = useState(person.username)
@@ -14,7 +14,7 @@ function Profile(person) {
     const [gender, setGender] = useState(person.gender)
     
     function handleClick(){
-        setShowForm(true)
+        setShowForm(!showForm)
     }
     function handleUsername(e){
         setUsername(e.target.value)
@@ -43,6 +43,22 @@ function Profile(person) {
     function handleGender(e){
         setGender(e.target.value)
         }
+    function collectData(e){
+        e.preventDefault()
+        const newPerson ={
+          username: e.target.username.value,
+          password: e.target.password.value,
+          first_name: e.target.first_name.value,
+          last_name: e.target.last_name.value,
+          phone_number: e.target.phone_number.value,
+          email: e.target.email.value,
+          address: e.target.address.value,
+          DOB: e.target.DOB.value,
+          gender: e.target.gender.value
+        }
+        handleSubmit(newPerson)
+        e.target.reset()
+        }
 
 return(
     <div>
@@ -57,7 +73,7 @@ return(
        <h4>Gender: {person.gender}</h4>
 
        <button onClick={handleClick}>Edit Profile</button>
-       {showForm?  <form>
+       {showForm?  <form onSubmit={collectData}>
         <input value={username} onChange={handleUsername} type="text" name="username" placeholder="Username" /> 
         <input value={password} onChange={handlePassword} type="text" name="password" placeholder="Password" />
         <input value={firstName} onChange={handleFirstName} type="text" name="first_name" placeholder="First name" />

@@ -28,6 +28,20 @@ function App() {
   function setPersonState(personObj){
     setPerson(personObj)
   }
+
+  function handleSubmit(editProfile){
+       console.log(editProfile)
+       fetch("http://localhost:9292/people",{
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(editProfile),
+      })
+        .then((r) => r.json())
+        .then((updatePerson) => console.log(updatePerson));
+  }
+
   function addUser(newPerson){
     fetch('http://localhost:9292/people', {
       method: 'POST',
@@ -37,6 +51,7 @@ function App() {
 
   }
 
+
   
   return (
     <div className="App">
@@ -45,7 +60,7 @@ function App() {
     <SignupPage addUser={addUser}/>
 
       <Functionlist/>
-      <Profile person={person}/>
+      <Profile person={person} handleSubmit={handleSubmit}/>
       <PaymentCalculator />
       <Loanlist/>
     </div>
