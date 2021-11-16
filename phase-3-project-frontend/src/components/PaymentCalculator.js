@@ -20,6 +20,7 @@ const PaymentCalculator = () => {
     <>
       <p>
         <input
+          name="amount"
           placeholder="loan amount"
           value={userInput.amount}
           onChange={handleInput}
@@ -27,6 +28,7 @@ const PaymentCalculator = () => {
       </p>
       <p>
         <input
+          name="term"
           placeholder="term"
           value={userInput.term}
           onChange={handleInput}
@@ -40,6 +42,7 @@ const PaymentCalculator = () => {
       years
       <p>
         <input
+          name="interest"
           placeholder="Interest Rate %"
           value={userInput.interest}
           onChange={handleInput}
@@ -47,12 +50,13 @@ const PaymentCalculator = () => {
       </p>
       <p>
         <input
+          name="payment"
           placeholder="monthly payment"
           value={userInput.payment}
           onChange={handleInput}
         />
       </p>
-      <button onSubmit={handleSubmit}>calculate</button>
+      <button onClick={handleSubmit}>calculate</button>
     </>
   );
 };
