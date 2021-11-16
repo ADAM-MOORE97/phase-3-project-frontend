@@ -82,10 +82,7 @@ const PaymentCalculator = () => {
         <>
         {`Your monthly payment is ${performCalculations(userInput)}`} 
         </>
-      )}</p>
-      <button onClick={handleSubmit}>calculate</button>
-
-    </>
+      )}</p> </>
   );
 };
 

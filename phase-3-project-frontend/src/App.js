@@ -4,12 +4,11 @@ import PaymentCalculator from './components/PaymentCalculator';
 import LandingPage from './components/LandingPage'
 import SignupPage from './components/SignupPage';
 import Functionlist from './components/Functionlist';
+import Profile from './components/Profile';
 import { useEffect, useState } from 'react';
 
 
 
-import Functionlist from './components/Functionlist';
-import Profile from './components/Profile';
 
 
 function App() {
