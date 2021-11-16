@@ -1,11 +1,9 @@
 import {useState, useEffect} from 'react'
 
 const LandingPage = ({people,setPersonState}) => {
-    const [login, setLogIn]=useState({
-        username: '',
-        password: ''
-    })
+    const [login, setLogIn]=useState({username: '',password: ''})
     const [verified, setVerified] = useState(true)
+    
     const handleSubmit = (e) =>{
         e.preventDefault()
         people.filter(person => {
