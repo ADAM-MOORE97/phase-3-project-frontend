@@ -1,3 +1,4 @@
+import history from "./history";
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,6 +12,7 @@ import SignupPage from './components/SignupPage';
 import Profile from './components/Profile';
 import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
+import Outstandingbalance from './components/Outstandingbalance';
 
 
 
@@ -18,7 +20,7 @@ import Navbar from './components/Navbar';
 
 function App() {
   const [people, setPeople] = useState([])
-  const [person, setPerson] = useState([])
+  const [person, setPerson] = useState({})
   const [newUser, setNewUser] = useState([])
   const [loans, setLoans] = useState([])
 
@@ -32,10 +34,12 @@ function App() {
     }
   }, [newUser]);
     useEffect(()=>{
+      if (person.id !== undefined)
         fetch(`http://localhost:9292/people/${person.id}/loans`)
         .then((r)=>r.json())
         .then((data)=>{
-          setLoans(data)})
+          setLoans(data)
+        })
       },[person])
   // Sets state of single person from People table, to be used in all subsequent
   // components, after successful Login
@@ -85,38 +89,36 @@ function App() {
   return (
     
     <div className="App">
-      
-    <Route path='/' exact>
-       <LandingPage setPersonState={setPersonState} people={people} />
+       <header className="App-header">
+      <Navbar/>
+      </header>
+     
+       <Switch>
+    <Route exact path='/'>
+       <LandingPage setPersonState={setPersonState} people={people} loans={loans} postPayment={postPayment} />
     </Route>
     <Route path='/signup'>
       <SignupPage addUser={addUser}/>
     </Route>  
-    <Route path='/home'>
-
-
-
-      <header className="App-header">
-      <Navbar/>
-      </header>
       <main>
         <Route path='/home/profile'>
       <Profile person={person} handleSubmit={handleSubmit} />
         </Route>
+        <Route exact path="/home" >
+       <Outstandingbalance loans={loans}/>
+       </Route>
 
-       <Route path="/home/payment_calculator" component={PaymentCalculator}/>
-
-
-        <Route path='/home/loan_list'>
+       <Route exact path="/home/payment_calculator" >
+       <PaymentCalculator/>
+       </Route>
+        <Route exact path='/home/loan_list'>
         <Loanlist loans={loans} postPayment={postPayment} /> 
         </Route>
-
-
-
         </main>
- 
-      </Route>
-      {/* <Loanlist loans={loans} postPayment={postPayment} /> */}
+    
+       </Switch>
+      
+      
 
     </div>
   
