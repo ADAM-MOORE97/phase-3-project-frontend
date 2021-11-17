@@ -16,6 +16,7 @@ function App() {
   const [people, setPeople] = useState([])
   const [person, setPerson] = useState([])
   const [newUser, setNewUser] = useState([])
+  const [loans, setLoans] = useState([])
 
   // Initial GET request for all People Data, used to login.
   useEffect(() => {
@@ -26,7 +27,12 @@ function App() {
       "hey"
     }
   }, [newUser]);
-
+    useEffect(()=>{
+        fetch(`http://localhost:9292/people/${person.id}/loans`)
+        .then((r)=>r.json())
+        .then((data)=>{
+          setLoans(data)})
+      },[person])
   // Sets state of single person from People table, to be used in all subsequent
   // components, after successful Login
   function setPersonState(personObj) {
@@ -45,19 +51,29 @@ function App() {
   };
 
   // Sends PATCH request so users can edit profile information.
-  function handleSubmit(editProfile) {
-    console.log(editProfile)
-    fetch("http://localhost:9292/people", {
+  function handleSubmit(editProfile, id) {
+    fetch(`http://localhost:9292/people/${id}`, {
       method: "PATCH",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json"
       },
       body: JSON.stringify(editProfile),
     })
       .then((r) => r.json())
-      .then((updatePerson) => console.log(updatePerson));
+      .then((updatePerson) => setPerson(updatePerson));
   }
-
+ function postPayment(amount,id){
+   console.log(amount)
+   fetch(`http://localhost:9292/loans/${id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(amount),
+    })
+      .then((r) => r.json())
+      .then((updateCurrentValue) => console.log(updateCurrentValue));
+ }
 
 
 
@@ -71,7 +87,7 @@ function App() {
       <Functionlist />
       <Profile person={person} handleSubmit={handleSubmit} />
       <PaymentCalculator />
-      <Loanlist />
+      <Loanlist loans={loans} postPayment={postPayment} />
     </div>
   );
 }
