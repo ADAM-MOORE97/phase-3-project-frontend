@@ -1,4 +1,3 @@
-import './App.css';
 import {
   BrowserRouter as Router,
   Switch,
@@ -93,30 +92,34 @@ function App() {
     <Route path='/signup'>
       <SignupPage addUser={addUser}/>
     </Route>  
-<Route exact path='/home'>
-      <Switch>
-      <Navbar/>
+    <Route path='/home'>
 
+
+
+      <header className="App-header">
+      <Navbar/>
+      </header>
+      <main>
         <Route path='/home/profile'>
       <Profile person={person} handleSubmit={handleSubmit} />
         </Route>
 
-        <Route path='/home/payment_calculator'>
-      <PaymentCalculator />
+       <Route path="/home/payment_calculator" component={PaymentCalculator}/>
 
-        </Route>
 
         <Route path='/home/loan_list'>
-      <Loanlist />
+        <Loanlist loans={loans} postPayment={postPayment} /> 
         </Route>
-      </Switch>
-      </Route>
-     
 
-      <Loanlist loans={loans} postPayment={postPayment} />
+
+
+        </main>
+ 
+      </Route>
+      {/* <Loanlist loans={loans} postPayment={postPayment} /> */}
 
     </div>
-    
+  
   );
 }
 

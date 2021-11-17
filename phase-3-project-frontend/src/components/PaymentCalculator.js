@@ -14,12 +14,19 @@ const PaymentCalculator = () => {
     setUserInput({ ...userInput, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
-    console.log(performCalculations(userInput));
+    // console.log(performCalculations(userInput));
+
+    setUserInput({
+      term: `${performCalculations(userInput)}`,
+
+      payment: `${performCalculations(userInput)}`,
+    });
   };
 
-  const handleReset = (e) => {
-    userInput(e)
-  }
+  const handleReset = () => {
+    setUserInput({ amount: "", term: "", interest: "", payment: "" });
+  };
+
   const toggleVisiblePayment = () => {
     setPaymentVisible(!paymentVisible);
   };
@@ -30,15 +37,15 @@ const PaymentCalculator = () => {
     const loanAmount = parseFloat(amount);
     const userPayment = parseFloat(payment);
     const intExponent = Math.pow(1 + interestDecimal, paymentInMonths);
-    const amtInterest = loanAmount * interestDecimal
+    const amtInterest = loanAmount * interestDecimal;
     const monthlyPayment = (amtInterest * intExponent) / (intExponent - 1);
     const paymentRounded = Math.round(monthlyPayment * 100) / 100;
-    const logOne = userPayment/(userPayment-amtInterest)
-    const logTwo = 1 + interestDecimal
-    const calculatedTerm = Math.round(Math.log(logOne)/Math.log(logTwo))
+    const logOne = userPayment / (userPayment - amtInterest);
+    const logTwo = 1 + interestDecimal;
+    const calculatedTerm = Math.round(Math.log(logOne) / Math.log(logTwo));
 
-    
-    if ((payment == 0)) return paymentRounded;
+    // return paymentRounded, calculatedTerm;
+    if (payment == 0) return paymentRounded;
     else return calculatedTerm;
   };
 
@@ -89,7 +96,8 @@ const PaymentCalculator = () => {
         }}
       >
         calculate
-      </button> <button onClick={handleReset}>Reset</button>
+      </button>{" "}
+      <button onClick={handleReset}>Reset</button>
       <p>{paymentVisible && <>{`${performCalculations(userInput)}`}</>}</p>{" "}
     </>
   );
