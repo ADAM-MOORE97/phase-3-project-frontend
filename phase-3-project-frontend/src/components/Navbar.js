@@ -3,6 +3,7 @@ const Navbar = () =>{
 const [display, setDisplay] =useState(false)
 
     return(
+        <nav>
         <div style={{display: 'inline'}}>
         <button>Home</button>
         <button>About</button>
@@ -17,6 +18,7 @@ const [display, setDisplay] =useState(false)
         
 
         </div>
+        </nav>
     )
 }
 
