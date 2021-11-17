@@ -5,32 +5,41 @@ const PaymentCalculator = () => {
     amount: "",
     term: "",
     interest: "",
+    payment: "",
   });
+
   const [paymentVisible, setPaymentVisible] = useState(false);
 
   const handleInput = (e) =>
     setUserInput({ ...userInput, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
-    // e.preventDefault();
     console.log(performCalculations(userInput));
   };
 
+  const handleReset = (e) => {
+    userInput(e)
+  }
   const toggleVisiblePayment = () => {
     setPaymentVisible(!paymentVisible);
   };
 
-
-  const performCalculations = ({ amount, term, interest }) => {
+  const performCalculations = ({ amount, term, interest, payment }) => {
     const interestDecimal = parseFloat(interest) / 100 / 12;
     const paymentInMonths = term * 12;
     const loanAmount = parseFloat(amount);
+    const userPayment = parseFloat(payment);
     const intExponent = Math.pow(1 + interestDecimal, paymentInMonths);
-    const monthlyPayment =
-      (loanAmount * interestDecimal * intExponent) / (intExponent - 1);
-
+    const amtInterest = loanAmount * interestDecimal
+    const monthlyPayment = (amtInterest * intExponent) / (intExponent - 1);
     const paymentRounded = Math.round(monthlyPayment * 100) / 100;
-    return paymentRounded;
+    const logOne = userPayment/(userPayment-amtInterest)
+    const logTwo = 1 + interestDecimal
+    const calculatedTerm = Math.round(Math.log(logOne)/Math.log(logTwo))
+
+    
+    if ((payment == 0)) return paymentRounded;
+    else return calculatedTerm;
   };
 
   return (
@@ -65,24 +74,24 @@ const PaymentCalculator = () => {
           onChange={handleInput}
         />
       </p>
-      {/* <p>
+      <p>
         <input
           name="payment"
           placeholder="monthly payment"
           value={userInput.payment}
           onChange={handleInput}
         />
-      </p> */}
-
-      <button onClick={() => {
+      </p>
+      <button
+        onClick={() => {
           handleSubmit();
           toggleVisiblePayment();
-        }}>calculate</button>
-      <p>{paymentVisible && (
-        <>
-        {`Your monthly payment is ${performCalculations(userInput)}`} 
-        </>
-      )}</p> </>
+        }}
+      >
+        calculate
+      </button> <button onClick={handleReset}>Reset</button>
+      <p>{paymentVisible && <>{`${performCalculations(userInput)}`}</>}</p>{" "}
+    </>
   );
 };
 
