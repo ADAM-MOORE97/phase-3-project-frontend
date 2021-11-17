@@ -13,6 +13,7 @@ function Loanlist({loans, postPayment}) {
       })
 return(
     <div>
+        <h1>Loan list</h1>
        <ul>{singleloan}</ul>
     </div>
 )}

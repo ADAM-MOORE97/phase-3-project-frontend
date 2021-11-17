@@ -1,16 +1,19 @@
 import {useState, useEffect} from 'react'
+import {Link} from "react-router-dom";
+import Loanlist from './Loanlist';
+import {useHistory} from 'react-router-dom';
 
-const LandingPage = ({people,setPersonState}) => {
+const LandingPage = ({people,setPersonState,loans, postPayment}) => {
     const [login, setLogIn]=useState({username: '',password: ''})
     const [verified, setVerified] = useState(true)
-    
+    let history = useHistory();
     const handleSubmit = (e) =>{
         e.preventDefault()
         people.filter(person => {
             if(person.username === login.username && person.password === login.password) {
                 setPersonState(person);
                 console.log(person)
-
+                history.push('/home')
             }
             else if(person.username !== login.username && person.password !== login.password){
                 setVerified(!verified)
@@ -34,7 +37,7 @@ const LandingPage = ({people,setPersonState}) => {
             
             <button>Signup</button>
 
-
+            
         </>
     );
 }
