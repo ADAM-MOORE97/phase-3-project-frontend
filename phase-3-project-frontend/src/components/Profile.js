@@ -1,7 +1,6 @@
 import React from "react" 
 import { useState } from 'react';
 function Profile({person,handleSubmit}) {
- 
     const [showForm, setShowForm] = useState(false)
     const [username, setUsername] = useState(person.username)
     const [password, setPassword] = useState(person.password)
@@ -56,7 +55,7 @@ function Profile({person,handleSubmit}) {
           DOB: e.target.DOB.value,
           gender: e.target.gender.value
         }
-        handleSubmit(newPerson)
+        handleSubmit(newPerson, person.id)
         e.target.reset()
         }
 
@@ -74,7 +73,7 @@ return(
 
        <button onClick={handleClick}>Edit Profile</button>
        {showForm?  <form onSubmit={collectData}>
-        <input value={username} onChange={handleUsername} type="text" name="username" placeholder="Username" /> 
+        <input value={username} onChange={handleUsername} type="text" name="username" placeholder="Username"/>
         <input value={password} onChange={handlePassword} type="text" name="password" placeholder="Password" />
         <input value={firstName} onChange={handleFirstName} type="text" name="first_name" placeholder="First name" />
         <input value={lastName} onChange={handleLastName} type="text" name="last_name" placeholder="Last name" />
