@@ -10,6 +10,7 @@ const LandingPage = ({people,setPersonState}) => {
             if(person.username === login.username && person.password === login.password) {
                 setPersonState(person);
                 console.log(person)
+
             }
             else if(person.username !== login.username && person.password !== login.password){
                 setVerified(!verified)
@@ -28,7 +29,7 @@ const LandingPage = ({people,setPersonState}) => {
             <form onSubmit={handleSubmit}>
             <p><input onChange={e=>setLogIn({...login, username:e.target.value})} placeholder='username'></input></p>
             <p><input type="password" onChange={e=>setLogIn({...login, password:e.target.value})} placeholder='password'></input></p>
-            <button type="submit">Login</button>
+            <button type="submit">Log In</button>
             </form>
             
             <button>Signup</button>

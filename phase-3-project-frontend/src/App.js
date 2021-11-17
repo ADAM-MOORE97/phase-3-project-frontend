@@ -1,9 +1,14 @@
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import Loanlist from './components/Loanlist';
 import PaymentCalculator from './components/PaymentCalculator';
 import LandingPage from './components/LandingPage'
 import SignupPage from './components/SignupPage';
-import Functionlist from './components/Functionlist';
 import Profile from './components/Profile';
 import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
@@ -63,16 +68,35 @@ function App() {
 
 
   return (
+    
     <div className="App">
+      
+    <Route path='/' exact>
+       <LandingPage setPersonState={setPersonState} people={people} />
+    </Route>
+    <Route path='/signup'>
+      <SignupPage addUser={addUser}/>
+    </Route>  
+<Route exact path='/home'>
+      <Switch>
       <Navbar/>
-      <LandingPage setPersonState={setPersonState} people={people} />
-      <SignupPage addUser={addUser} />
 
-      <Functionlist />
+        <Route path='/home/profile'>
       <Profile person={person} handleSubmit={handleSubmit} />
+        </Route>
+
+        <Route path='/home/payment_calculator'>
       <PaymentCalculator />
+        </Route>
+
+        <Route path='/home/loan_list'>
       <Loanlist />
+        </Route>
+      </Switch>
+      </Route>
+     
     </div>
+    
   );
 }
 
