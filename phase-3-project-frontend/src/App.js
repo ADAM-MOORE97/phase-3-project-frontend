@@ -6,6 +6,7 @@ import SignupPage from './components/SignupPage';
 import Functionlist from './components/Functionlist';
 import Profile from './components/Profile';
 import { useEffect, useState } from 'react';
+import Navbar from './components/Navbar';
 
 
 
@@ -63,7 +64,7 @@ function App() {
 
   return (
     <div className="App">
-
+      <Navbar/>
       <LandingPage setPersonState={setPersonState} people={people} />
       <SignupPage addUser={addUser} />
 
