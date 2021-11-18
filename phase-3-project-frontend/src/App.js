@@ -14,7 +14,8 @@ import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Outstandingbalance from './components/Outstandingbalance';
 import Addloan from "./components/Addloan";
-
+import About from "./components/About";
+import FAQs from "./components/FAQs";
 
 
 
@@ -110,10 +111,11 @@ fetch('http://localhost:9292/loans', {
   return (
     
     <div className="App">
+      {(person.id!==undefined)?
        <header className="App-header">
       <Navbar/>
       </header>
-     
+        : null}
        <Switch>
     <Route exact path='/'>
        <LandingPage setPersonState={setPersonState} people={people} loans={loans} postPayment={postPayment} />
@@ -131,7 +133,12 @@ fetch('http://localhost:9292/loans', {
        <Route exact path="/home/add_loan" >
        <Addloan postItem={postItem} person={person}/>
        </Route>
-
+       <Route exact path="/home/about" >
+       <About/>
+       </Route>
+       <Route exact path="/home/FAQs" >
+       <FAQs/>
+       </Route>
        <Route exact path="/home/payment_calculator" >
        <PaymentCalculator/>
        </Route>
