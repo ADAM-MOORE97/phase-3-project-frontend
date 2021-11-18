@@ -25,7 +25,7 @@ const LandingPage = ({people,setPersonState,loans, postPayment}) => {
   
     return(
         <>
-            <h1>Loan Managizer</h1>
+            <h1 className="title">Loan Managizer</h1>
 
             <h3>Welcome Message ......</h3>
             {verified? <p>Please LOGIN, new user's can signup by clicking button below!</p>:<p>Uh oh! user not recognized, try again or signup below!</p>}

@@ -8,8 +8,8 @@ const [display, setDisplay] =useState(false)
         <nav>
         <div style={{display: 'inline'}}>
         <Link to='/home'><button>Home</button></Link>
-        <button>About</button>
-        <button>FAQs</button>
+        <Link to='/home/about'><button>About</button></Link>
+        <Link to='/home/FAQs'><button>FAQs</button></Link>
         <Link to='/home/loan_list'><button>Loan List</button></Link>
         <Link to='/home/add_loan'><button>Add Loan</button></Link>
         <Link to="/home/payment_calculator"><button>Payment Caculator</button></Link>
