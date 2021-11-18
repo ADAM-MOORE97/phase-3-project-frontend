@@ -32,6 +32,8 @@ function Loan({name, currentValue, item, loan, postPayment, intereset_rate}) {
             fetch(`http://localhost:9292/loans/${loan.id}`, {
                 method: "DELETE",
               })
+              .then(r=>r.json())
+              .then(data=>console.log(data))
            }
         }
         
