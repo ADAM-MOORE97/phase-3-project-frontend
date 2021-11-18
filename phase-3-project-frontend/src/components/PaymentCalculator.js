@@ -14,17 +14,13 @@ const PaymentCalculator = () => {
     setUserInput({ ...userInput, [e.target.name]: e.target.value });
 
   const handleSubmit = (e) => {
-    // console.log(performCalculations(userInput));
+    console.log(performCalculations(userInput));
 
-    setUserInput({
-      term: `${performCalculations(userInput)}`,
-
-      payment: `${performCalculations(userInput)}`,
-    });
   };
 
   const handleReset = () => {
     setUserInput({ amount: "", term: "", interest: "", payment: "" });
+    toggleVisiblePayment()
   };
 
   const toggleVisiblePayment = () => {
@@ -45,8 +41,8 @@ const PaymentCalculator = () => {
     const calculatedTerm = Math.round(Math.log(logOne) / Math.log(logTwo));
 
     // return paymentRounded, calculatedTerm;
-    if (payment == 0) return paymentRounded;
-    else return calculatedTerm;
+    if (payment == 0) return `Your monthly payment is  $${paymentRounded}`;
+    else return `Your new term is ${calculatedTerm} months`;
   };
 
   return (
