@@ -35,7 +35,7 @@ const LandingPage = ({people,setPersonState,loans, postPayment}) => {
             <button type="submit">Log In</button>
             </form>
             
-            <button>Signup</button>
+            <Link to='/signup'><button>Signup</button></Link>
 
             
         </>
