@@ -56,7 +56,7 @@ function Profile({person,handleSubmit}) {
           gender: e.target.gender.value
         }
         handleSubmit(newPerson, person.id)
-        e.target.reset()
+        setShowForm(!showForm)
         }
 
 return(
