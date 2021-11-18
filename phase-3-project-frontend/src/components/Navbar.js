@@ -11,7 +11,7 @@ const [display, setDisplay] =useState(false)
         <button>About</button>
         <button>FAQs</button>
         <Link to='/home/loan_list'><button>Loan List</button></Link>
-        <button>Add Loan</button>
+        <Link to='/home/add_loan'><button>Add Loan</button></Link>
         <div style={{display: 'inline'}} className="subnav">
             <button onClick={(e)=>setDisplay(!display)}  className="subnavbtn">"UserName"▼</button>
             <div className="subnav-content">

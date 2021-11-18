@@ -1,7 +1,9 @@
 import React from "react" 
 import { useState } from "react";
-function Loan({name, currentValue, item, loan, postPayment}) {
-    console.log(currentValue)
+
+function Loan({name, currentValue, item, loan, postPayment, intereset_rate}) {
+   
+    console.log(intereset_rate)
     const [showItem, setShowItem]= useState(false)
     const [showPayment, setShowPayment]=useState(false)
     const [amount, setAmount] = useState('')
@@ -30,7 +32,7 @@ return(
          <h5>Cost: {item.cost}</h5>
         <h5>Item Type: {item.item_type}</h5>
         <h5>Term: {loan.term}</h5>
-        <h5>Intereset Rate: {loan.intereset_rate}</h5>
+        <h5>Intereset Rate: {intereset_rate}</h5>
         <button onClick={paymentClick}>Add payment</button>
         {showPayment? <form onSubmit={collectPayment}>
         <input value={amount} onChange={handleAmount} type="number" name="amount" placeholder="Amount"/>

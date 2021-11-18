@@ -13,6 +13,7 @@ import Profile from './components/Profile';
 import { useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import Outstandingbalance from './components/Outstandingbalance';
+import Addloan from "./components/Addloan";
 
 
 
@@ -83,8 +84,28 @@ function App() {
       .then((updateCurrentValue) => console.log(updateCurrentValue));
  }
 
-
-
+function postItem(newItem){
+  console.log(newItem)
+  fetch('http://localhost:9292/items', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(newItem)
+  }).then(r => r.json())
+  .then(data => 
+    {newItem.item_id=data.id
+      postLoan(newItem)
+    })
+  }
+function postLoan(newLoan){
+  console.log(newLoan)
+fetch('http://localhost:9292/loans', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(newLoan)
+})
+.then(r => r.json())
+.then(data => console.log(data))
+}
 
   return (
     
@@ -106,6 +127,9 @@ function App() {
         </Route>
         <Route exact path="/home" >
        <Outstandingbalance loans={loans}/>
+       </Route>
+       <Route exact path="/home/add_loan" >
+       <Addloan postItem={postItem} person={person}/>
        </Route>
 
        <Route exact path="/home/payment_calculator" >
