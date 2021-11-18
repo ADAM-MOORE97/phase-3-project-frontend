@@ -104,7 +104,7 @@ fetch('http://localhost:9292/loans', {
   body: JSON.stringify(newLoan)
 })
 .then(r => r.json())
-.then(data => console.log(data))
+.then(data => setLoans([...loans,data]))
 }
 
   return (
