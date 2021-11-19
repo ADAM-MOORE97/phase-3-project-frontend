@@ -30,7 +30,7 @@ body {
   background-color: rgba(131,197,190);
 }
 
-nav button {
+/* nav button {
   background-color: rgba(0 ,109,119);
   border: transparent;
   padding: 10px, 20px, 10px, 20px;
@@ -41,7 +41,7 @@ nav button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%)
-  }
+  } */
 
 .title {
   font-family: 'M PLUS 1', sans-serif;
