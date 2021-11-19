@@ -4,6 +4,7 @@ const Navbar = () => {
   const [display, setDisplay] = useState(false);
 
   return (
+      <>
     <nav>
       <ul>
         <Link to="/home">
@@ -28,7 +29,7 @@ const Navbar = () => {
         </Link>
         <div style={{ display: "inline" }} className="subnav">
           <li onClick={(e) => setDisplay(!display)} className="subnavbtn">
-            UserName▼
+            UserName▸
           </li>
             <li>
               <Link to="/home/profile">
@@ -55,6 +56,7 @@ const Navbar = () => {
           </div>
       </ul>
     </nav>
+    </>
   );
 };
 

@@ -30,10 +30,12 @@ function Loanlist({loans,person, postPayment, setPerson}) {
       })
       
 return(
+    <>
+    <h1>...</h1>
     <div>
     { (loanState[0]!==undefined)?
     <div>
-        <h1>Loan list</h1>
+        {/* <h1>Loan list</h1> */}
        <div>{singleloan}</div>
     </div>:
     <div>
@@ -41,5 +43,6 @@ return(
     <Link to='/'><button>Log in</button></Link>
     </div>}
     </div>
+    </>
 )}
 export default Loanlist;

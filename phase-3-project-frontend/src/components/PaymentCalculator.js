@@ -47,6 +47,8 @@ const PaymentCalculator = () => {
 
   return (
     <>
+    <h1>...</h1>
+    <h2>Payment Calculator</h2>
       <p>
         <input
           name="amount"

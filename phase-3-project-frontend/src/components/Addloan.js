@@ -40,11 +40,14 @@ const [newLoan1, setNewLoan1] = useState( {
         <div>
             {(person.id!== undefined)?
             <div>
+              <h1>...</h1>
        <h2>New Purchase</h2>
        <form onSubmit={collectNewLoan}>
+        <p>
         <input onChange={e=>setNewLoan1({...newLoan1, name:e.target.value})} type="text" name="item_name" placeholder="Item Name"/>
         <input onChange={e=>setNewLoan1({...newLoan1, item_type:e.target.value})} type="text" name="item_type" placeholder="Item Type" />
         <input onChange={e=>setNewLoan1({...newLoan1, cost:e.target.value})} type="number" name="cost" placeholder="Price" />
+        </p>
         <input onChange={e=>setNewLoan1({...newLoan1, interest_rate:e.target.value})} type="number" name="interest_rate" placeholder="Interest Rate" />
         <input onChange={e=>setNewLoan1({...newLoan1, term:e.target.value})} type="number" name="term" placeholder="Term" />
         <button type="submit">Submit</button>
