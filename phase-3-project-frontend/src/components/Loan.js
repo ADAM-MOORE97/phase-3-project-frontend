@@ -40,7 +40,10 @@ function Loan({name, currentValue, loan, postPayment,deleteLoan}) {
 
     
 return(
+    <>
+    <h1 className="hide">...</h1>
     <div>
+       
         <h4 onClick={handleClick}>Name: {name}</h4>
         Current Value: {loanvalue.current_value}
         {showItem? <div>
@@ -68,5 +71,6 @@ return(
        
         : null}
     </div>
+    </>
 )}
 export default Loan;
