@@ -34,7 +34,7 @@ const [newLoan1, setNewLoan1] = useState( {
       })
       .then(r => r.json())
       .then(data => setLoans(data))
-      .then(history.push('/home/loan_list'))
+      
       }
     return(
         <div>
