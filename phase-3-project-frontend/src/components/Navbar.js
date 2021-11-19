@@ -1,30 +1,61 @@
-import {useState} from 'react'
+import { useState } from "react";
 import { Link } from "react-router-dom";
-const Navbar = () =>{
-const [display, setDisplay] =useState(false)
+const Navbar = () => {
+  const [display, setDisplay] = useState(false);
 
+  return (
+    <nav>
+      <ul>
+        <Link to="/home">
+          <li>Home</li>
+        </Link>
+        <Link to="/home/about">
+          <li>About</li>
+        </Link>
 
-    return(
-        <nav>
-        <div style={{display: 'inline'}}>
-        <Link to='/home'><button>Home</button></Link>
-        <Link to='/home/about'><button>About</button></Link>
-        <Link to='/home/FAQs'><button>FAQs</button></Link>
-        <Link to='/home/loan_list'><button>Loan List</button></Link>
-        <Link to='/home/add_loan'><button>Add Loan</button></Link>
-        <Link to="/home/payment_calculator"><button>Payment Caculator</button></Link>
-        <div style={{display: 'inline'}} className="subnav">
-            <button onClick={(e)=>setDisplay(!display)}  className="subnavbtn">"UserName"▼</button>
-            <div className="subnav-content">
-            <Link to='/home/profile'> <a  style={display?{display: 'block'}:{display: 'none'}} href="">Profile</a></Link>
-            <Link to='/'> <a  style={display?{display: 'block'}:{display: 'none'}} href="">Log Out</a></Link>
-            </div>
-        </div>
-        
+        <Link to="/home/FAQs">
+          <li>FAQs</li>
+        </Link>
 
-        </div>
-        </nav>
-    )
-}
+        <Link to="/home/loan_list">
+          <li>Loan List</li>
+        </Link>
+        <Link to="/home/add_loan">
+          <li>Add Loan</li>
+        </Link>
+        <Link to="/home/payment_calculator">
+          <li>Payment Caculator</li>
+        </Link>
+        <div style={{ display: "inline" }} className="subnav">
+          <li onClick={(e) => setDisplay(!display)} className="subnavbtn">
+            UserName▼
+          </li>
+            <li>
+              <Link to="/home/profile">
+                {" "}
+                <a
+                  style={display ? { display: "block" } : { display: "none" }}
+                  href=""
+                >
+                  Profile
+                </a>
+              </Link>
+            </li>
+            <li>
+            <Link to="/">
+              {" "}
+              <a
+                style={display ? { display: "block" } : { display: "none" }}
+                href=""
+              >
+                Log Out
+              </a>
+            </Link>
+            </li>
+          </div>
+      </ul>
+    </nav>
+  );
+};
 
 export default Navbar;
