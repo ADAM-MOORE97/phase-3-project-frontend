@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from "react";
 import Loan from "./Loan";
 import { Link } from "react-router-dom";
-function Loanlist({loans,person, postPayment, setPerson}) {
+function Loanlist({loans,person, postPayment, setPerson, setLoans}) {
     const [loanState, setLoanState] = useState(loans)
    function deleteLoan(loanvalue){
     if (loanvalue.current_value === 0){
@@ -10,7 +10,10 @@ function Loanlist({loans,person, postPayment, setPerson}) {
             
           })
           .then(r=>r.json())
-          .then(data=>setLoanState(data))
+          .then(data=>{
+              setLoanState(data);
+                setLoans(data)})
+          
         
        }
    }

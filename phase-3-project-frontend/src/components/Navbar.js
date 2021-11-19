@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-const Navbar = () => {
+const Navbar = ({person}) => {
   const [display, setDisplay] = useState(false);
-
+  
+console.log(person)
   return (
       <>
     <nav>
