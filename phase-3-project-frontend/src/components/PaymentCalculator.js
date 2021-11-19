@@ -41,7 +41,7 @@ const PaymentCalculator = () => {
     const calculatedTerm = Math.round(Math.log(logOne) / Math.log(logTwo));
 
     // return paymentRounded, calculatedTerm;
-    if (payment === 0) return `Your monthly payment is  $${paymentRounded}`;
+    if (payment == 0) return `Your monthly payment is  $${paymentRounded}`;
     else return `Your new term is ${calculatedTerm} months`;
   };
 
