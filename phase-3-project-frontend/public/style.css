@@ -26,8 +26,13 @@ body {
   background-color: rgba(131, 197, 190);
 }
 
+
+/* nav button {
+  background-color: rgba(0 ,109,119);
+=======
 nav button {
   background-color: rgba(0, 109, 119);
+
   border: transparent;
   padding: 10px, 20px, 10px, 20px;
   margin-top: 10px;
@@ -36,8 +41,13 @@ nav button {
   position: absolute;
   top: 50%;
   left: 50%;
+
+  transform: translate(-50%, -50%)
+  } */
+
   transform: translate(-50%, -50%);
 }
+
 
 .landing {
   width: 60%;
