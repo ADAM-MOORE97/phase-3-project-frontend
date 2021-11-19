@@ -86,7 +86,7 @@ function App() {
     <div className="App">
       
        <header className="App-header">
-      <Navbar/>
+      <Navbar person={person}/>
       </header>
       
        <Switch>
@@ -116,7 +116,7 @@ function App() {
        <PaymentCalculator/>
        </Route>
         <Route exact path='/home/loan_list'>
-        <Loanlist loans={loans} setPerson={setPerson} person={person} postPayment={postPayment} /> 
+        <Loanlist loans={loans} setLoans={setLoans} setPerson={setPerson} person={person} postPayment={postPayment} /> 
         </Route>
         </main>
     
