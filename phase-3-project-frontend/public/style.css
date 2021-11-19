@@ -111,3 +111,7 @@ input {
 .hide {
   color: rgba(131, 197, 190);
 }
+
+.loan:hover{
+  font-weight: bold;
+}

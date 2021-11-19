@@ -29,6 +29,7 @@ function Loanlist({loans,person, postPayment, setPerson, setLoans}) {
           setPerson={setPerson}
           person={person}
           deleteLoan={deleteLoan}
+          className="loan"
           />
       })
       
