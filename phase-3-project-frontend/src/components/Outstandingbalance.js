@@ -20,14 +20,18 @@ function Outstandingbalance({loans}){
       return { item_name: x, value: loanArray[i] }
     })
     console.log(finalArray)
-    let renderLabel = function(entry) {
-      return `${entry.item_name}: ${entry.value}`;
+    const RADIAN = Math.PI / 180;
+    let renderLabel = function(entry, cx, cy, midAngle, innerRadius, outerRadius) {  const radius = 25 + innerRadius + (outerRadius - innerRadius);
+      const x = cx + radius * Math.cos(-midAngle * RADIAN);
+      const y = cy + radius * Math.sin(-midAngle * RADIAN);
+      return <text x={x} y={y} fill="white" textAnchor="middle" dominantBaseline="central">`${entry.item_name}: ${entry.value}`</text>;
   }
     return(
         <div>
-        <h1>You Owe:  {ArraySum} dollars!</h1>
         <h1>Pie chart</h1>
-        <PieChart width={900} height={900}>
+        <h1>You Owe:  {ArraySum} dollars!</h1>
+
+        <PieChart width={600} height={600}>
           <Pie data={finalArray} 
           dataKey="value" 
           outerRadius={200} 
