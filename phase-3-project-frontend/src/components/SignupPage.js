@@ -33,7 +33,7 @@ const SignupPage = ({setNewUser}) =>{
 
     return(
         <>
-            <form onSubmit={submit}>
+            <form className="sign-up" onSubmit={submit}>
                 <p><input onChange={e =>setNewPerson({...newPerson, first_name: e.target.value})} placeholder='John'></input></p>
                 <p><input onChange={e =>setNewPerson({...newPerson, last_name: e.target.value})} placeholder='Smith'></input></p>
                 <p><input onChange={e =>setNewPerson({...newPerson, phone_number: e.target.value})} placeholder='phone number'></input></p>

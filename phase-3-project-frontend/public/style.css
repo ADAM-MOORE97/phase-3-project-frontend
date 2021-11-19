@@ -112,6 +112,10 @@ input {
   color: rgba(131, 197, 190);
 }
 
-.loan:hover{
-  font-weight: bold;
+.sign-up {
+  padding-top: 50px;
+}
+
+.content {
+  padding-top: 50px;
 }

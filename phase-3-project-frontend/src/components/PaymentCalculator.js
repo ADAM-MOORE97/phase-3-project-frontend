@@ -46,8 +46,7 @@ const PaymentCalculator = () => {
   };
 
   return (
-    <>
-    <h1>...</h1>
+    <div className="content">
     <h2>Payment Calculator</h2>
       <p>
         <input
@@ -97,7 +96,7 @@ const PaymentCalculator = () => {
       </button>{" "}
       <button onClick={handleReset}>Reset</button>
       <p>{paymentVisible && <>{`${performCalculations(userInput)}`}</>}</p>{" "}
-    </>
+    </div>
   );
 };
 

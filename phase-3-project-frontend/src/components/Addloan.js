@@ -37,8 +37,7 @@ const [newLoan1, setNewLoan1] = useState( {
       
       }
     return(
-        <div>
-          <h1>...</h1>
+        <div className="content">
             {(person.id!== undefined)?
             <div>
         
