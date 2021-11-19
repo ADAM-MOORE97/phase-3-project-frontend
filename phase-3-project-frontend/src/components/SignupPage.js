@@ -1,5 +1,7 @@
 import {useState} from 'react'
-const SignupPage = ({addUser}) =>{
+import {useHistory} from 'react-router-dom';
+
+const SignupPage = ({setNewUser}) =>{
     const [newPerson, setNewPerson] = useState({
         first_name: '',
         last_name: '',
@@ -11,11 +13,17 @@ const SignupPage = ({addUser}) =>{
         username: '',
         password: ''
     })
+    let history = useHistory();
 
     const submit = (e) =>{
         e.preventDefault()
-        addUser(newPerson)
-        e.target.reset();
+        fetch('http://localhost:9292/people', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newPerson)
+    }).then(r => r.json()).then(data => setNewUser(data))
+        e.target.reset()
+        history.push('/')
     }
 
 

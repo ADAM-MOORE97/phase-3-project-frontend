@@ -35,18 +35,12 @@ function App() {
       "hey"
     }
   }, [newUser]);
-    useEffect(()=>{
-      if (person.id !== undefined)
-        fetch(`http://localhost:9292/people/${person.id}/loans`)
-        .then((r)=>r.json())
-        .then((data)=>{
-          setLoans(data)
-        })
-      },[person])
+
   // Sets state of single person from People table, to be used in all subsequent
   // components, after successful Login
   function setPersonState(personObj) {
     setPerson(personObj)
+    console.log(person)
   }
 
   // Sends Post request to API for new user sign up, 
@@ -73,7 +67,7 @@ function App() {
       .then((updatePerson) => setPerson(updatePerson));
   }
  function postPayment(amount,id){
-   console.log(amount)
+
    fetch(`http://localhost:9292/loans/${id}`, {
       method: "PATCH",
       headers: {
@@ -85,43 +79,22 @@ function App() {
       .then((updateCurrentValue) => console.log(updateCurrentValue));
  }
 
-function postItem(newItem){
-  console.log(newItem)
-  fetch('http://localhost:9292/items', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(newItem)
-  }).then(r => r.json())
-  .then(data => 
-    {newItem.item_id=data.id
-      postLoan(newItem)
-    })
-  }
-function postLoan(newLoan){
-  console.log(newLoan)
-fetch('http://localhost:9292/loans', {
-  method: 'POST',
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(newLoan)
-})
-.then(r => r.json())
-.then(data => setLoans([...loans,data]))
-}
+
 
   return (
     
     <div className="App">
-      {(person.id!==undefined)?
+      
        <header className="App-header">
       <Navbar/>
       </header>
-        : null}
+      
        <Switch>
     <Route exact path='/'>
-       <LandingPage setPersonState={setPersonState} people={people} loans={loans} postPayment={postPayment} />
+       <LandingPage setPersonState={setPersonState} setLoans={setLoans} people={people} />
     </Route>
     <Route path='/signup'>
-      <SignupPage addUser={addUser}/>
+      <SignupPage setNewUser={setNewUser}/>
     </Route>  
       <main>
         <Route path='/home/profile'>
@@ -131,7 +104,7 @@ fetch('http://localhost:9292/loans', {
        <Outstandingbalance loans={loans}/>
        </Route>
        <Route exact path="/home/add_loan" >
-       <Addloan postItem={postItem} person={person}/>
+       <Addloan setLoans={setLoans} person={person}/>
        </Route>
        <Route exact path="/home/about" >
        <About/>
@@ -143,7 +116,7 @@ fetch('http://localhost:9292/loans', {
        <PaymentCalculator/>
        </Route>
         <Route exact path='/home/loan_list'>
-        <Loanlist loans={loans} postPayment={postPayment} /> 
+        <Loanlist loans={loans} setPerson={setPerson} person={person} postPayment={postPayment} /> 
         </Route>
         </main>
     
