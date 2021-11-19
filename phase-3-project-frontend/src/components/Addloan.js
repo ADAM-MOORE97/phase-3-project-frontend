@@ -38,9 +38,10 @@ const [newLoan1, setNewLoan1] = useState( {
       }
     return(
         <div>
+          <h1>...</h1>
             {(person.id!== undefined)?
             <div>
-              <h1>...</h1>
+        
        <h2>New Purchase</h2>
        <form onSubmit={collectNewLoan}>
         <p>
