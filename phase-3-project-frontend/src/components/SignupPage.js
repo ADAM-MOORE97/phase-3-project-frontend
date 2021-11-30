@@ -17,7 +17,7 @@ const SignupPage = ({setNewUser}) =>{
 
     const submit = (e) =>{
         e.preventDefault()
-        fetch('http://localhost:9292/people', {
+        fetch('https://loanmanagizerapi.herokuapp.com/people', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newPerson)

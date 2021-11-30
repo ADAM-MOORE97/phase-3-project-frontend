@@ -5,7 +5,7 @@ function Loanlist({loans,person, postPayment, setPerson, setLoans}) {
     const [loanState, setLoanState] = useState(loans)
    function deleteLoan(loanvalue){
     if (loanvalue.current_value === 0){
-        fetch(`http://localhost:9292/loans/${loanvalue.id}`, {
+        fetch(`https://loanmanagizerapi.herokuapp.com/${loanvalue.id}`, {
             method: "DELETE",
             
           })

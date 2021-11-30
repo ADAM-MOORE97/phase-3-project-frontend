@@ -15,7 +15,7 @@ const LandingPage = ({people,setLoans, setPersonState}) => {
         people.filter(person => {
             if(person.username === login.username && person.password === login.password) {
                 setPersonState(person)
-                fetch(`http://localhost:9292/people/${person.id}/loans`)
+                fetch(`https://loanmanagizerapi.herokuapp.com/people/${person.id}/loans`)
                 .then((r)=>r.json())
                 .then((data)=>{
                   setLoans(data)})

@@ -28,7 +28,7 @@ function App() {
 
   // Initial GET request for all People Data, used to login.
   useEffect(() => {
-    fetch('http://localhost:9292/people')
+    fetch('https://loanmanagizerapi.herokuapp.com/people')
       .then(r => r.json())
       .then(data => setPeople(data))
     return () => {
@@ -47,7 +47,7 @@ function App() {
   // changes state variable to trigger GET request again so 
   // new user can Log In.
   function addUser(newPerson) {
-    fetch('http://localhost:9292/people', {
+    fetch('https://loanmanagizerapi.herokuapp.com/people', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(newPerson)
@@ -56,7 +56,7 @@ function App() {
 
   // Sends PATCH request so users can edit profile information.
   function handleSubmit(editProfile, id) {
-    fetch(`http://localhost:9292/people/${id}`, {
+    fetch(`https://loanmanagizerapi.herokuapp.com/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"
@@ -68,7 +68,7 @@ function App() {
   }
  function postPayment(amount,id){
 
-   fetch(`http://localhost:9292/loans/${id}`, {
+   fetch(`https://loanmanagizerapi.herokuapp.com/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json"

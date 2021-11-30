@@ -15,7 +15,7 @@ const [newLoan1, setNewLoan1] = useState( {
 })
  function collectNewLoan(e){
         e.preventDefault()
-        fetch('http://localhost:9292/items', {
+        fetch('https://loanmanagizerapi.herokuapp.com/items', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(newLoan1)
@@ -27,7 +27,7 @@ const [newLoan1, setNewLoan1] = useState( {
     }
 
     function postLoan(newLoan1){
-      fetch('http://localhost:9292/loans', {
+      fetch('https://loanmanagizerapi.herokuapp.com/loans', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(newLoan1)
